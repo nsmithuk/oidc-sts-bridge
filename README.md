@@ -1,4 +1,4 @@
-# oidc-sts-bridge
+# OIDC to AWS STS Bridge
 
 Validates OpenID Connect (OIDC) JSON Web Tokens (JWTs) from private Identity Providers (IDPs) and exchanges them for AWS temporary credentials, mapping claims to session tags with security and performance optimisations.
 
