@@ -11,8 +11,8 @@ license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "joserfc",
     "urllib3",
-    "git+https://github.com/authlib/joserfc.git@90140ed#egg=joserfc", # Use real tag after next release.
     "boto3",
     "mypy-boto3-sts"
 ]

@@ -1,0 +1,1 @@
+git+https://github.com/authlib/joserfc.git@90140ed#egg=joserfc
