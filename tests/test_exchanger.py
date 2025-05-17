@@ -31,8 +31,8 @@ def test_exchanger_exchange_success(mock_key_store, mock_sts_client, mock_jwt_de
     tags = {"tag1": "val1"}
     result = exchanger.exchange(MOCK_JWT, role_arn, tags)
     assert result["Header"] == {"kid": "key1", "alg": "RS256"}
-    assert result["Claims"]["all"] == MOCK_CLAIMS
-    assert result["Claims"]["passed"] == {
+    assert result["Claims"]["All"] == MOCK_CLAIMS
+    assert result["Claims"]["Passed"] == {
         "iss": "test-issuer",
         "sub": "user123",
         "aud": "audience",
