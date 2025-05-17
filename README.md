@@ -119,8 +119,8 @@ result = exchanger.exchange(
 )
 
 # Access the result
-print(result["credentials"])  # AWS credentials
-print(result["claims"]["passed"])  # Validated claims that were passed to STS
+print(result["Credentials"])  # AWS credentials
+print(result["Claims"]["Passed"])  # Validated claims that were passed to STS
 ```
 
 ### Configuration Notes
@@ -132,9 +132,9 @@ print(result["claims"]["passed"])  # Validated claims that were passed to STS
 
 The `exchange` method returns a dictionary with:
 
-- `header`: JWT header (e.g., `kid`, `alg`).
-- `claims`: All claims and those passed to AWS (lowercased, filtered).
-- `credentials`: AWS temporary credentials (`AccessKeyId`, `SecretAccessKey`, `SessionToken`, `Expiration`).
+- `Header`: JWT header (e.g., `kid`, `alg`).
+- `Claims`: All claims and those passed to AWS (lowercased, filtered).
+- `Credentials`: AWS temporary credentials (`AccessKeyId`, `SecretAccessKey`, `SessionToken`, `Expiration`).
 
 ### Deployment Notes
 

@@ -2,3 +2,9 @@
 *.pem
 __pycache__
 /test.py
+env
+/build
+/devfile.yaml
+/examples/lambda/docker-packages.sh
+/examples/lambda/package.sh
+/examples/lambda/zip.sh

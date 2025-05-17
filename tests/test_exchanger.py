@@ -30,9 +30,9 @@ def test_exchanger_exchange_success(mock_key_store, mock_sts_client, mock_jwt_de
     mock_sts_client.responses[role_arn] = {"Credentials": MOCK_CREDENTIALS}
     tags = {"tag1": "val1"}
     result = exchanger.exchange(MOCK_JWT, role_arn, tags)
-    assert result["header"] == {"kid": "key1", "alg": "RS256"}
-    assert result["claims"]["all"] == MOCK_CLAIMS
-    assert result["claims"]["passed"] == {
+    assert result["Header"] == {"kid": "key1", "alg": "RS256"}
+    assert result["Claims"]["all"] == MOCK_CLAIMS
+    assert result["Claims"]["passed"] == {
         "iss": "test-issuer",
         "sub": "user123",
         "aud": "audience",
@@ -42,8 +42,8 @@ def test_exchanger_exchange_success(mock_key_store, mock_sts_client, mock_jwt_de
         "jti": "unique-id",
         "custom": "value",
     }
-    assert result["credentials"]["AccessKeyId"] == "mock-access-key"
-    assert result["credentials"]["Expiration"] == MOCK_CREDENTIALS["Expiration"].isoformat()
+    assert result["Credentials"]["AccessKeyId"] == "mock-access-key"
+    assert result["Credentials"]["Expiration"] == MOCK_CREDENTIALS["Expiration"].isoformat()
     assert len(mock_sts_client.calls) == 1
     call = mock_sts_client.calls[0]
     assert call["Tags"] == [

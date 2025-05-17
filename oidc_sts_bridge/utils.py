@@ -1,4 +1,6 @@
-def is_stringable(value) -> bool:
+from typing import Any
+
+def is_stringable(value: Any) -> bool:
     """Checks if a value can be converted to a (sensible) string.
 
     Args:
@@ -21,12 +23,12 @@ def is_stringable(value) -> bool:
     # Check if the value is a supported type that can typically be converted to a string.
     if isinstance(value, (int, float, bool, str)):
         try:
-            # Attempt to convert the value to a string to confirm it’s stringable.
+            # Attempt to convert the value to a string to confirm it's stringable.
             str(value)
             return True
-        except Exception:
-            # Handle rare cases where str() fails (e.g., custom objects with broken __str__).
-            # This ensures defensive handling without crashing on unexpected inputs.
+        except (ValueError, TypeError):
+            # Handle specific exceptions that might occur during string conversion.
+            # This ensures defensive handling without catching unexpected errors.
             return False
     # Return False for unsupported types (e.g., dict, list, None) without attempting str().
     return False

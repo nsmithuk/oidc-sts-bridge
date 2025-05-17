@@ -2,6 +2,7 @@ import json
 import logging
 from datetime import datetime, timedelta
 from re import match as rematch
+from typing import Any
 
 from botocore.exceptions import BotoCoreError, ClientError
 from joserfc import jwt
@@ -245,7 +246,7 @@ class AWS:
         """Initializes the AWS role assumption handler with an STS client."""
         self._sts_client = sts_client
 
-    def assume_role(self, role_arn: str, claims: dict, tags: dict) -> CredentialsTypeDef:
+    def assume_role(self, role_arn: str, claims: dict[str, Any], tags: dict[str, Any]) -> CredentialsTypeDef:
         """Assumes an IAM role using validated claims and tags as session tags.
 
         Args:
@@ -314,7 +315,7 @@ class AWS:
         return bool(rematch(pattern, role_arn))
 
     @classmethod
-    def map_validate_merge_claims_and_tags(cls, claims: dict, tags: dict) -> dict:
+    def map_validate_merge_claims_and_tags(cls, claims: dict[str, Any], tags: dict[str, Any]) -> dict[str, Any]:
         """Validates and merges JWT claims and additional tags for AWS session tags.
 
         Args:
@@ -410,7 +411,7 @@ class Exchanger:
 
     def exchange(
         self, jwt_token: str, role_arn_to_assume: str, tags: dict[str, str] | None = None
-    ) -> dict:
+    ) -> dict[str, Any]:
         """Exchanges a JWT token for AWS credentials, including optional session tags.
 
         Args:
@@ -438,7 +439,7 @@ class Exchanger:
 
     def _exchange(
         self, jwt_token: str, role_arn_to_assume: str, tags: dict[str, str] | None = None
-    ) -> dict:
+    ) -> dict[str, Any]:
         """Implements JWT token exchange and role assumption.
 
         Args:
@@ -493,7 +494,7 @@ class Exchanger:
         creds["Expiration"] = creds["Expiration"].isoformat()
 
         return {
-            "header": token.header,
-            "claims": {"all": token.claims, "passed": filtered_claims},
-            "credentials": creds,
+            "Header": token.header,
+            "Claims": {"All": token.claims, "Passed": filtered_claims},
+            "Credentials": creds,
         }
