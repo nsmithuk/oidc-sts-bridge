@@ -246,7 +246,9 @@ class AWS:
         """Initializes the AWS role assumption handler with an STS client."""
         self._sts_client = sts_client
 
-    def assume_role(self, role_arn: str, claims: dict[str, Any], tags: dict[str, Any]) -> CredentialsTypeDef:
+    def assume_role(
+        self, role_arn: str, claims: dict[str, Any], tags: dict[str, Any]
+    ) -> CredentialsTypeDef:
         """Assumes an IAM role using validated claims and tags as session tags.
 
         Args:
@@ -315,7 +317,9 @@ class AWS:
         return bool(rematch(pattern, role_arn))
 
     @classmethod
-    def map_validate_merge_claims_and_tags(cls, claims: dict[str, Any], tags: dict[str, Any]) -> dict[str, Any]:
+    def map_validate_merge_claims_and_tags(
+        cls, claims: dict[str, Any], tags: dict[str, Any]
+    ) -> dict[str, Any]:
         """Validates and merges JWT claims and additional tags for AWS session tags.
 
         Args:

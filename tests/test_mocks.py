@@ -1,4 +1,6 @@
+import base64
 import json
+import os
 from datetime import datetime, timedelta
 from typing import Any, Dict
 
@@ -11,11 +13,13 @@ from urllib3.response import HTTPResponse
 
 from oidc_sts_bridge.main import ALLOWED_ALGORITHMS, KeyStore
 
+mock_n = base64.urlsafe_b64encode(os.urandom(256)).rstrip(b"=").decode()
+
 # Mock JWKS for testing
 MOCK_JWKS = {
     "keys": [
-        {"kid": "key1", "alg": "RS256", "kty": "RSA", "n": "mock_n", "e": "AQAB"},
-        {"kid": "key2", "alg": "RS256", "kty": "RSA", "n": "mock_n2", "e": "AQAB"},
+        {"kid": "key1", "alg": "RS256", "kty": "RSA", "n": mock_n, "e": "AQAB"},
+        {"kid": "key2", "alg": "RS256", "kty": "RSA", "n": mock_n, "e": "AQAB"},
     ]
 }
 

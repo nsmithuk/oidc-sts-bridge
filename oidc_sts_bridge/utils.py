@@ -1,5 +1,6 @@
 from typing import Any
 
+
 def is_stringable(value: Any) -> bool:
     """Checks if a value can be converted to a (sensible) string.
 

@@ -85,7 +85,6 @@ The project is built with principles to ensure security, reliability, and mainta
    ```bash
    git clone https://github.com/your-repo/oidc-sts-bridge.git
    cd oidc-sts-bridge
-   pip install -r requirements.txt
    pip install .
    ```
 

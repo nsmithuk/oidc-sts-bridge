@@ -38,7 +38,7 @@ def test_key_store_init_invalid_jwks_cache_ttl():
         KeyStore("https://example.com/jwks", jwks_cache_ttl="1h")  # String
 
 
-def test_key_store_download_keyset_success(mock_pool_manager, caplog):
+def test_key_store_download_keyset_success(mock_pool_manager):
     """Test KeyStore downloading a JWKS successfully."""
     key_store = KeyStore("https://example.com/jwks", jwks_cache_ttl=None)
     key_store._http = mock_pool_manager

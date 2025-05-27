@@ -4,17 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "oidc-sts-bridge"
-version = "0.1.0"
+version = "0.2.0"
 description = "Secure OIDC to AWS STS Token Exchange: Validates OIDC JWTs from any Identity Provider (public or private) and exchanges them for AWS temporary credentials, mapping claims to session tags with robust security and performance optimisations."
 authors = [{ name = "Neil Smith", email = "neil@nsmith.net" }]
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "joserfc",
-    "urllib3",
-    "boto3",
-    "mypy-boto3-sts"
+    "joserfc>=1.1.0,<2.0",
+    "urllib3>=2.4.0,<3.0",
+    "boto3>=1.38.0,<2.0",
+    "mypy-boto3-sts>=1.38.0,<2.0"
 ]
 
 [project.optional-dependencies]
